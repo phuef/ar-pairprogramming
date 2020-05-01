@@ -1,4 +1,4 @@
-var geo = navigator.geolocation;
+//var geo = navigator.geolocation;
 //console.log(geo);
 //console.log(Geolocation);
 //console.log(Geolocation.getCurrentPosition());
