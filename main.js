@@ -1,2 +1,2 @@
 var geo = navigator.geolocation;
-conosle.log(geo)
+console.log(geo)
