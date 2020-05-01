@@ -11,6 +11,14 @@ var APIKey= "9e55039796c9a5f733b4100a7273622d";
 var request = new XMLHttpRequest();
 var apicall="api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid="+APIKey;
 request.open('GET', 'apicall', true);
+request.onload = function() {
+  // begin accessing JSON data here
+  var data = JSON.parse(this.response);
+
+  for (var i = 0; i < data.length; i++) {
+    console.log(data);
+  }
+}
 request.send();
 console.log(request);
 console.log(request.responseText);
