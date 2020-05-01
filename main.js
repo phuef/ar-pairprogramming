@@ -16,7 +16,7 @@ request.onload = function() {
   var data = JSON.parse(this.response);
 
   for (var i = 0; i < data.length; i++) {
-    console.log(data);
+    console.log(data.responseText);
   }
 }
 //{"coord":{"lon":7.62,"lat":51.95},"weather":[{"id":521,"main":"Rain","description":"shower rain","icon":"09d"}],"base":"stations","main":{"temp":285.15,"feels_like":280.09,"temp_min":283.15,"temp_max":287.04,"pressure":1000,"humidity":71},"visibility":10000,"wind":{"speed":6.2,"deg":300},"clouds":{"all":40},"dt":1588347256,"sys":{"type":1,"id":1269,"country":"DE","sunrise":1588305552,"sunset":1588359227},"timezone":7200,"id":2867543,"name":"Münster","cod":200}
@@ -24,7 +24,6 @@ request.onload = function() {
 //main.temp in celsius
 request.send();
 console.log(request);
-console.log(request.responseText);
  function kelvinInCelsius(kelvin){
    return kelvin-273.15;
  }
