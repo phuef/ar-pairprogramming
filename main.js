@@ -10,7 +10,7 @@ var APIKey= "9e55039796c9a5f733b4100a7273622d";
 // https://api.openweathermap.org/data/2.5/weather?lat=51.9541&lon=7.6210&appid=9e55039796c9a5f733b4100a7273622d
 var request = new XMLHttpRequest();
 var apicall="https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid="+APIKey;
-/*function weatherData(){
+function weatherData(){
   request.open('GET', apicall, false);
    request.onload = function() {
     var data = JSON.parse(this.response);
@@ -29,12 +29,9 @@ document.getElementById('output').value= weather.weather[0].description;
 console.log(document.getElementById('output').value)
  function kelvinInCelsius(kelvin){
    return kelvin-273.15;
- }*/
- AFRAME.registerComponent('weather', {
-   schema: {
-     value: {default:"Es konnten Daten geladen werden"},
+ }
 
-     scale:{default:"50 50 50"},
-
-   }
- })
+ var weatherText = document.querySelector('a-text');
+console.log(weatherText.value)
+  weatherText.setAttribute('value', weather.weather[0].description);
+ console.log(weatherText);
