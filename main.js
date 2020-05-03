@@ -12,7 +12,7 @@ var APIKey= "9e55039796c9a5f733b4100a7273622d";
 var request = new XMLHttpRequest();
 var apicall="https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid="+APIKey;
 request.open('GET', apicall, true);
-request.onload = function() {
+await request.onload = function() {
   // begin accessing JSON data here
   data = JSON.parse(this.response);
 
@@ -23,7 +23,7 @@ request.onload = function() {
 //main.temp in celsius
 request.send();
 console.log(request);
-console.log(data)
+console.log(data);
 console.log(data.responseText);
  function kelvinInCelsius(kelvin){
    return kelvin-273.15;
