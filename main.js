@@ -21,9 +21,9 @@ async function weatherData(){
   request.send();
   return request.responseText;
 }
-weatherData();
+var weather=weatherData();
+console.log(weather);
 console.log(request);
-console.log(data);
  function kelvinInCelsius(kelvin){
    return kelvin-273.15;
  }
