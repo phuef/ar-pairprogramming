@@ -24,6 +24,7 @@ request.onload = function() {
 //main.temp in celsius
 request.send();
 console.log(request);
+console.log(data);
 console.log(data.responseText);
  function kelvinInCelsius(kelvin){
    return kelvin-273.15;
