@@ -23,7 +23,7 @@ function weatherData(){
 }
 var weather=weatherData();
 console.log(weather);
-console.log(request);
+console.log(request.response);
  function kelvinInCelsius(kelvin){
    return kelvin-273.15;
  }
