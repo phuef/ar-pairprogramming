@@ -11,20 +11,20 @@ var APIKey= "9e55039796c9a5f733b4100a7273622d";
 // https://api.openweathermap.org/data/2.5/weather?lat=51.9541&lon=7.6210&appid=9e55039796c9a5f733b4100a7273622d
 var request = new XMLHttpRequest();
 var apicall="https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid="+APIKey;
-request.open('GET', apicall, true);
-await request.onload = function() {
-  // begin accessing JSON data here
-  data = JSON.parse(this.response);
+async function weatherData(){
+  request.open('GET', apicall, true);
+  await request.onload = function() {
+    data = JSON.parse(this.response);
 
-  console.log(data)
+    console.log(data)
+  }
+  //{"coord":{"lon":7.62,"lat":51.95},"weather":[{"id":521,"main":"Rain","description":"shower rain","icon":"09d"}],"base":"stations","main":{"temp":285.15,"feels_like":280.09,"temp_min":283.15,"temp_max":287.04,"pressure":1000,"humidity":71},"visibility":10000,"wind":{"speed":6.2,"deg":300},"clouds":{"all":40},"dt":1588347256,"sys":{"type":1,"id":1269,"country":"DE","sunrise":1588305552,"sunset":1588359227},"timezone":7200,"id":2867543,"name":"Münster","cod":200}
+  //weather.description
+  //main.temp in celsius
+  request.send();
 }
-//{"coord":{"lon":7.62,"lat":51.95},"weather":[{"id":521,"main":"Rain","description":"shower rain","icon":"09d"}],"base":"stations","main":{"temp":285.15,"feels_like":280.09,"temp_min":283.15,"temp_max":287.04,"pressure":1000,"humidity":71},"visibility":10000,"wind":{"speed":6.2,"deg":300},"clouds":{"all":40},"dt":1588347256,"sys":{"type":1,"id":1269,"country":"DE","sunrise":1588305552,"sunset":1588359227},"timezone":7200,"id":2867543,"name":"Münster","cod":200}
-//weather.description
-//main.temp in celsius
-request.send();
 console.log(request);
 console.log(data);
-console.log(data.responseText);
  function kelvinInCelsius(kelvin){
    return kelvin-273.15;
  }
