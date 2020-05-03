@@ -22,9 +22,11 @@ function weatherData(){
   return request.responseText;
 }
 var weather=weatherData();
-document.getElementById('output').value= weather.weather.description;
+console.log(weather);
 console.log(weather.weather);
 console.log(weather.weather.description)
+document.getElementById('output').value= weather.weather.description;
+
  function kelvinInCelsius(kelvin){
    return kelvin-273.15;
  }
