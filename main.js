@@ -13,7 +13,7 @@ var request = new XMLHttpRequest();
 var apicall="https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid="+APIKey;
 async function weatherData(){
   request.open('GET', apicall, true);
-  await request.onload = function() {
+   request.onload = await function() {
     data = JSON.parse(this.response);
 
     console.log(data)
