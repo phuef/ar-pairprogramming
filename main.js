@@ -5,7 +5,6 @@
 //console.log(Geolocation.watchPosition());
 var lat =51.9541;
 var lon =7.6210;
-var data=null;
 var APIKey= "9e55039796c9a5f733b4100a7273622d";
 // api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={your api key}
 // https://api.openweathermap.org/data/2.5/weather?lat=51.9541&lon=7.6210&appid=9e55039796c9a5f733b4100a7273622d
@@ -14,7 +13,7 @@ var apicall="https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+l
 async function weatherData(){
   request.open('GET', apicall, true);
    request.onload = await function() {
-    data = JSON.parse(this.response);
+    var data = JSON.parse(this.response);
 
     console.log(data)
   }
@@ -23,6 +22,7 @@ async function weatherData(){
   //main.temp in celsius
   request.send();
 }
+weatherData();
 console.log(request);
 console.log(data);
  function kelvinInCelsius(kelvin){
