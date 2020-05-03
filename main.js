@@ -19,7 +19,7 @@ function weatherData(){
   //weather.description
   //main.temp in celsius
   request.send(null);
-  return request.responseText;
+  return JSON.parse(request.responseText);
 }
 var weather=weatherData();
 console.log(weather);
