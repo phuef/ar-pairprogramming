@@ -1,15 +1,39 @@
-//var geo = navigator.geolocation;
-//console.log(geo);
-//console.log(Geolocation);
-//console.log(Geolocation.getCurrentPosition());
-//console.log(Geolocation.watchPosition());
-var lat =51.9541;
-var lon =7.6210;
-var APIKey= "9e55039796c9a5f733b4100a7273622d";
-// api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={your api key}
-// https://api.openweathermap.org/data/2.5/weather?lat=51.9541&lon=7.6210&appid=9e55039796c9a5f733b4100a7273622d
-var request = new XMLHttpRequest();
-var apicall="https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid="+APIKey;
+ function getLocation() {
+ if (navigator.geolocation) {
+ navigator.geolocation.getCurrentPosition(showPosition);
+
+ } else {
+   document.getElementbyId("geojson").value = "Geolocation is not supported by this browser.";
+
+ }
+}
+
+function showPosition(position) {
+  var coordLat = position.coords.longitude;
+  var coordLong = position.coords.latitude;
+  requestWeatherData(coordLat,coordLong);
+
+}
+getLocation();
+
+function requestWeatherData(lat,lon){
+  var APIKey= "9e55039796c9a5f733b4100a7273622d";
+  // api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={your api key}
+  // https://api.openweathermap.org/data/2.5/weather?lat=51.9541&lon=7.6210&appid=9e55039796c9a5f733b4100a7273622d
+  var request = new XMLHttpRequest();
+  var apicall="https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid="+APIKey;
+  var weather=weatherData();
+  console.log(weather);
+  console.log(weather.weather);
+  console.log(weather.weather[0].description);
+  document.getElementById('output').value= weather.weather[0].description;
+  console.log(document.getElementById('output').value)
+  var weatherText = document.querySelector('a-text');
+ console.log(weatherText.value)
+   weatherText.setAttribute('value', weather.weather[0].description);
+  console.log(weatherText);
+}
+
 function weatherData(){
   request.open('GET', apicall, false);
    request.onload = function() {
@@ -21,17 +45,7 @@ function weatherData(){
   request.send(null);
   return JSON.parse(request.responseText);
 }
-var weather=weatherData();
-console.log(weather);
-console.log(weather.weather);
-console.log(weather.weather[0].description);
-document.getElementById('output').value= weather.weather[0].description;
-console.log(document.getElementById('output').value)
+
  function kelvinInCelsius(kelvin){
    return kelvin-273.15;
  }
-
- var weatherText = document.querySelector('a-text');
-console.log(weatherText.value)
-  weatherText.setAttribute('value', weather.weather[0].description);
- console.log(weatherText);
