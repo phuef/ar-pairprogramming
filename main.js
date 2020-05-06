@@ -22,7 +22,7 @@ function requestWeatherData(lat,lon){
   // https://api.openweathermap.org/data/2.5/weather?lat=51.9541&lon=7.6210&appid=9e55039796c9a5f733b4100a7273622d
 
   var apicall="https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid="+APIKey;
-  var weather=weatherData();
+  var weather=weatherData(apicall);
   console.log(weather);
   console.log(weather.weather);
   console.log(weather.weather[0].description);
@@ -34,7 +34,7 @@ function requestWeatherData(lat,lon){
   console.log(weatherText);
 }
 
-function weatherData(){
+function weatherData(apicall){
   request.open('GET', apicall, false);
    request.onload = function() {
     var data = JSON.parse(this.response);
