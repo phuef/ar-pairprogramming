@@ -31,7 +31,6 @@ function requestWeatherData(lat,lon){
   var weatherText = document.querySelector('a-text');
  //console.log(weatherText.value);
    weatherText.setAttribute('value', weather.weather[0].description);
-   weatherText.setAttribute('gps-entity-place', "latitude: " +lat + ";longitude: " +lon +";");
   console.log(weatherText);
 }
 
