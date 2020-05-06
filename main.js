@@ -26,11 +26,12 @@ function requestWeatherData(lat,lon){
   console.log(weather);
   console.log(weather.weather);
   console.log(weather.weather[0].description);
-  document.getElementById('output').value= weather.weather[0].description;
-  console.log(document.getElementById('output').value);
+  //document.getElementById('output').value= weather.weather[0].description;
+  //console.log(document.getElementById('output').value);
   var weatherText = document.querySelector('a-text');
- console.log(weatherText.value);
+ //console.log(weatherText.value);
    weatherText.setAttribute('value', weather.weather[0].description);
+   weatherText.setAttribute('gps-entity-place', "latitude: " +lat + ";longitude: " +lon +";");
   console.log(weatherText);
 }
 
