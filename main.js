@@ -46,7 +46,10 @@ function weatherData(apicall){
   return JSON.parse(request.responseText);
 }
 let gyroscope = new Gyroscope({frequency: 60});
-
+screen.orientation.onchange = function (){
+    // logs 'portrait' or 'landscape'
+    console.log(screen.orientation.type.match(/\w+/)[0]);
+};
 gyroscope.addEventListener('reading', e => {
   console.log("Angular velocity along the X-axis " + gyroscope.x);
   console.log("Angular velocity along the Y-axis " + gyroscope.y);
