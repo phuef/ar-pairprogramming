@@ -1,4 +1,4 @@
- function getLocation() {
+ /*function getLocation() {
  if (navigator.geolocation) {
  navigator.geolocation.getCurrentPosition(showPosition);
 
@@ -59,6 +59,16 @@ gyroscope.addEventListener('reading', e => {
   }
 
   */
+  var map = L.map('map').setView([-41.2858, 174.78682], 14);
+          mapLink =
+              '<a href="http://www.esri.com/">Esri</a>';
+          wholink =
+              'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
+          L.tileLayer(
+              'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+              attribution: '&copy; '+mapLink+', '+wholink,
+              maxZoom: 18,
+              }).addTo(map);
 
   if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", function(event) {
@@ -74,25 +84,24 @@ gyroscope.addEventListener('reading', e => {
 }
 var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
     if (frontToBack<30 && frontToBack>-30){
-      var weatherText = document.querySelector('a-text');
+      /*var weatherText = document.querySelector('a-text');
        weatherText.setAttribute('value', "vertical");
          var scene = document.querySelector('a-scene');
-         scene.setAttribute('display', "none");
+         scene.setAttribute('display', "none");*/
        document.getElementById("map").style.display="block";
 
 
     }
     else{
-      var weatherText = document.querySelector('a-text');
+      /*var weatherText = document.querySelector('a-text');
        weatherText.setAttribute('value', "horizontal");
        var scene = document.querySelector('a-scene');
-       scene.setAttribute('display', "block");
+       scene.setAttribute('display', "block");*/
        document.getElementById("map").style.display="none";
-       document.getElementById("scene").style.display="block";
+       //document.getElementById("scene").style.display="block";
     }
 }
 
-gyroscope.start();
  function kelvinInCelsius(kelvin){
    return kelvin-273.15;
  }
