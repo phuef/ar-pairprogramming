@@ -57,6 +57,7 @@ gyroscope.addEventListener('reading', e => {
     var weatherText = document.querySelector('a-text');
      weatherText.setAttribute('value', ""+gyroscope.x);
   }
+  });
   */
 
   if (window.DeviceOrientationEvent) {
@@ -73,13 +74,12 @@ gyroscope.addEventListener('reading', e => {
 }
 var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
     if (frontToBack<30 && frontToBack>-30){
-      alert("das Handy ist jetzt im vertikalen Modus");
       var weatherText = document.querySelector('a-text');
        weatherText.setAttribute('vertikal');
 
     }
-};
-});
+}
+
 gyroscope.start();
  function kelvinInCelsius(kelvin){
    return kelvin-273.15;
