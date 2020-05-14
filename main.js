@@ -45,17 +45,40 @@ function weatherData(apicall){
   request.send(null);
   return JSON.parse(request.responseText);
 }
-let gyroscope = new Gyroscope({frequency: 60});
-screen.orientation.onchange = function (){
-    // logs 'portrait' or 'landscape'
-    console.log(screen.orientation.type.match(/\w+/)[0]);
-};
+/*
+let gyroscope = new Gyroscope({frequency: 0.5});
 gyroscope.addEventListener('reading', e => {
   console.log("Angular velocity along the X-axis " + gyroscope.x);
   console.log("Angular velocity along the Y-axis " + gyroscope.y);
   console.log("Angular velocity along the Z-axis " + gyroscope.z);
-  var weatherText = document.querySelector('a-text');
-   weatherText.setAttribute('value', ""+gyroscope.x +gyroscope.y +gyroscope.z);
+  x=gyroscope.x
+  y=gyroscope.y
+  if (x<=20 && x>=-20){
+    var weatherText = document.querySelector('a-text');
+     weatherText.setAttribute('value', ""+gyroscope.x);
+  }
+  */
+
+  if (window.DeviceOrientationEvent) {
+    window.addEventListener("deviceorientation", function(event) {
+        // alpha: rotation around z-axis
+        var rotateDegrees = event.alpha;
+        // gamma: left to right
+        var leftToRight = event.gamma;
+        // beta: front back motion
+        var frontToBack = event.beta;
+
+        handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
+    }, true);
+}
+var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
+    if (frontToBack<30 && frontToBack>-30){
+      alert("das Handy ist jetzt im vertikalen Modus");
+      var weatherText = document.querySelector('a-text');
+       weatherText.setAttribute('vertikal');
+
+    }
+};
 });
 gyroscope.start();
  function kelvinInCelsius(kelvin){
