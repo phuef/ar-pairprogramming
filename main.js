@@ -1,4 +1,4 @@
- /*function getLocation() {
+ function getLocation() {
  if (navigator.geolocation) {
  navigator.geolocation.getCurrentPosition(showPosition);
 
@@ -45,20 +45,7 @@ function weatherData(apicall){
   request.send(null);
   return JSON.parse(request.responseText);
 }
-/*
-let gyroscope = new Gyroscope({frequency: 0.5});
-gyroscope.addEventListener('reading', e => {
-  console.log("Angular velocity along the X-axis " + gyroscope.x);
-  console.log("Angular velocity along the Y-axis " + gyroscope.y);
-  console.log("Angular velocity along the Z-axis " + gyroscope.z);
-  x=gyroscope.x
-  y=gyroscope.y
-  if (x<=20 && x>=-20){
-    var weatherText = document.querySelector('a-text');
-     weatherText.setAttribute('value', ""+gyroscope.x);
-  }
 
-  */
   var map = L.map('map').setView([-41.2858, 174.78682], 14);
           mapLink =
               '<a href="http://www.esri.com/">Esri</a>';
@@ -84,21 +71,19 @@ gyroscope.addEventListener('reading', e => {
 }
 var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
     if (frontToBack<30 && frontToBack>-30){
-      /*var weatherText = document.querySelector('a-text');
+      var weatherText = document.querySelector('a-text');
        weatherText.setAttribute('value', "vertical");
          var scene = document.querySelector('a-scene');
-         scene.setAttribute('display', "none");*/
+         scene.setAttribute('display', "none");
        document.getElementById("map").style.display="block";
 
 
     }
     else{
-      /*var weatherText = document.querySelector('a-text');
+      var weatherText = document.querySelector('a-text');
        weatherText.setAttribute('value', "horizontal");
-       var scene = document.querySelector('a-scene');
-       scene.setAttribute('display', "block");*/
        document.getElementById("map").style.display="none";
-       //document.getElementById("scene").style.display="block";
+       document.getElementById("scene").style.display="block";
     }
 }
 
