@@ -77,12 +77,14 @@ var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
       var weatherText = document.querySelector('a-text');
        weatherText.setAttribute('value', "vertical");
        document.getElementById("map").style.display="block";
+       document.getElementById("scene").style.display="none";
 
     }
     else{
       var weatherText = document.querySelector('a-text');
        weatherText.setAttribute('value', "horizontal");
        document.getElementById("map").style.display="none";
+       document.getElementById("scene").style.display="block";
     }
 }
 
