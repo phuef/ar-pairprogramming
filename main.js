@@ -76,7 +76,13 @@ var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
     if (frontToBack<30 && frontToBack>-30){
       var weatherText = document.querySelector('a-text');
        weatherText.setAttribute('value', "vertical");
+       document.getElementById("map").style.display="block";
 
+    }
+    else{
+      var weatherText = document.querySelector('a-text');
+       weatherText.setAttribute('value', "horizontal");
+       document.getElementById("map").style.display="none";
     }
 }
 
