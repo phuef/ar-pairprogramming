@@ -61,15 +61,18 @@ function weatherData(apicall){
               }).addTo(map);
 
  var current_position;
-
+var lat,lon;
   function onLocationFound(e) {
             if (current_position) {
             map.removeLayer(current_position);
         }
           current_position= L.marker(e.latlng).addTo(map);
 
+
           var latLngs = [ current_position.getLatLng() ];
-          map.panTo(latLngs);
+          lat=latLngs[0].lat;
+            lon=latLngs[0].lng;
+          map.panTo(new L.LatLng(lat, lon));
 
       }
       function onLocationError(e) {
@@ -86,7 +89,7 @@ function weatherData(apicall){
    //setInterval(locate, 5000);
    locate()
    L.easyButton('<img src="./crosshairs-gps.png">', function(btn, map){
-    map.setView(latLngs);
+    map.setView([lat,lon]);
 }).addTo(map);
   if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", function(event) {
@@ -106,7 +109,7 @@ var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
        weatherText.setAttribute('value', "vertical");
          var scene = document.querySelector('a-scene');
          scene.setAttribute('display', "none");
-       document.getElementById("map").style.display="block";
+       document.getElementById("map").style.display="initial";
 
 
     }
@@ -114,7 +117,7 @@ var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
       var weatherText = document.querySelector('a-text');
        weatherText.setAttribute('value', "horizontal");
        document.getElementById("map").style.display="none";
-       document.getElementById("scene").style.display="block";
+       document.getElementById("scene").style.display="initial";
     }
 }
 
