@@ -83,8 +83,11 @@ function weatherData(apicall){
      map.locate({setView: true, maxZoom: 20});
    }
    // call locate every 3 seconds... forever
-   setInterval(locate, 5000);
-
+   //setInterval(locate, 5000);
+   locate()
+   L.easyButton('<img src="./crosshairs-gps.png">', function(btn, map){
+    map.setView(latLngs);
+}).addTo(map);
   if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", function(event) {
         // alpha: rotation around z-axis
