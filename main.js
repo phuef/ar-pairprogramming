@@ -79,8 +79,6 @@ function weatherData(apicall){
   map.on('locationfound', onLocationFound);
   map.on('locationerror', onLocationError);
 
-  map.locate({setView: true, maxZoom: 20});
-
   // wrap map.locate in a function
    function locate() {
      map.locate({setView: true, maxZoom: 20});
