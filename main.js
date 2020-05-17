@@ -60,20 +60,18 @@ function weatherData(apicall){
               maxZoom: 20,
               }).addTo(map);
 
- var current_position, current_accuracy;
+ var current_position;
 
   function onLocationFound(e) {
             if (current_position) {
             map.removeLayer(current_position);
-            map.removeLayer(current_accuracy);
         }
-          var current_position= L.marker(e.latlng).addTo(map)
+          current_position= L.marker(e.latlng).addTo(map)
 
           var latLngs = [ current_position.getLatLng() ];
           var markerBounds = L.latLngBounds(latLngs);
           map.fitBounds(markerBounds);
           map.setZoom(20);
-          current_accuracy = L.circle(e.latlng, radius).addTo(map);
       }
       function onLocationError(e) {
         alert(e.message);
