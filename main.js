@@ -57,6 +57,8 @@ function weatherData(apicall){
               maxZoom: 18,
               }).addTo(map);
 
+  var marker = L.marker([coordLat, coordLong]).addTo(map);
+
   if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", function(event) {
         // alpha: rotation around z-axis
