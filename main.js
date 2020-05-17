@@ -68,11 +68,12 @@ function weatherData(apicall){
             map.removeLayer(current_accuracy);
         }
           var current_position= L.marker(e.latlng).addTo(map)
-        
+
           var latLngs = [ current_position.getLatLng() ];
           var markerBounds = L.latLngBounds(latLngs);
           map.fitBounds(markerBounds);
           map.setZoom(20);
+          current_accuracy = L.circle(e.latlng, radius).addTo(map);
       }
       function onLocationError(e) {
         alert(e.message);
