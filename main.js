@@ -61,7 +61,19 @@ function weatherData(apicall){
               }).addTo(map);
 
   var marker = L.marker([coordLat, coordLong]).addTo(map);
+  function onLocationFound(e) {
+          var radius = e.accuracy / 2;
 
+          L.marker(e.latlng).addTo(map)
+              .bindPopup("This is you").openPopup();
+      }
+      function onLocationError(e) {
+        alert(e.message);
+    }
+    map.on('locationfound', onLocationFound);
+  map.on('locationerror', onLocationError);
+
+  map.locate({setView: true, maxZoom: 20});
   if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", function(event) {
         // alpha: rotation around z-axis
