@@ -86,8 +86,8 @@ var lat,lon;
      map.locate({setView: true, maxZoom: 20});
    }
    // call locate every 3 seconds... forever
-   //setInterval(locate, 5000);
-   locate()
+   setInterval(locate, 5000);
+   //locate()
    L.easyButton('<img src="./crosshairs-gps.png">', function(btn, map){
     map.setView([lat,lon]);
 }).addTo(map);
