@@ -49,7 +49,7 @@ function weatherData(apicall){
   return JSON.parse(request.responseText);
 }
 
-  var map = L.map('map').setView([-41.2858, 174.78682], 14);
+  var map = L.map('map');
           mapLink =
               '<a href="http://www.esri.com/">Esri</a>';
           wholink =
@@ -60,17 +60,13 @@ function weatherData(apicall){
               maxZoom: 18,
               }).addTo(map);
 
-  var marker = L.marker([coordLat, coordLong]).addTo(map);
   function onLocationFound(e) {
-          var radius = e.accuracy / 2;
-
           L.marker(e.latlng).addTo(map)
-              .bindPopup("This is you").openPopup();
       }
       function onLocationError(e) {
         alert(e.message);
     }
-    map.on('locationfound', onLocationFound);
+  map.on('locationfound', onLocationFound);
   map.on('locationerror', onLocationError);
 
   map.locate({setView: true, maxZoom: 20});
