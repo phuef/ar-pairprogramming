@@ -1,3 +1,6 @@
+ var coordLat = 51.234;
+ var coordLong = 7.234;
+
  function getLocation() {
  if (navigator.geolocation) {
  navigator.geolocation.getCurrentPosition(showPosition);
@@ -9,8 +12,8 @@
 }
 
 function showPosition(position) {
-  var coordLat = position.coords.longitude;
-  var coordLong = position.coords.latitude;
+  coordLat = position.coords.longitude;
+  coordLong = position.coords.latitude;
   requestWeatherData(coordLat,coordLong);
 
 }
