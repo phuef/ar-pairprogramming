@@ -109,7 +109,7 @@ var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
        weatherText.setAttribute('value', "vertical");
          var scene = document.querySelector('a-scene');
          scene.setAttribute('display', "none");
-       document.getElementById("map").style.display="initial";
+       document.getElementById("map").style.display="flex";
 
 
     }
@@ -117,7 +117,7 @@ var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
       var weatherText = document.querySelector('a-text');
        weatherText.setAttribute('value', "horizontal");
        document.getElementById("map").style.display="none";
-       document.getElementById("scene").style.display="initial";
+       document.getElementById("scene").style.display="flex";
     }
 }
 
