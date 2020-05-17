@@ -1,5 +1,5 @@
- var coordLat = 51.234;
- var coordLong = 7.234;
+ var coordLat = 51.963604;
+ var coordLong = 7.613225;
 
  function getLocation() {
  if (navigator.geolocation) {
@@ -49,7 +49,7 @@ function weatherData(apicall){
   return JSON.parse(request.responseText);
 }
 
-  var map = L.map('map');
+  var map = L.map('map').setView([coordLat,coordLong], 20);
           mapLink =
               '<a href="http://www.esri.com/">Esri</a>';
           wholink =
