@@ -66,12 +66,11 @@ function weatherData(apicall){
             if (current_position) {
             map.removeLayer(current_position);
         }
-          current_position= L.marker(e.latlng).addTo(map)
+          current_position= L.marker(e.latlng).addTo(map);
 
           var latLngs = [ current_position.getLatLng() ];
-          var markerBounds = L.latLngBounds(latLngs);
-          map.fitBounds(markerBounds);
-          map.setZoom(20);
+          map.panTo(latLngs);
+
       }
       function onLocationError(e) {
         alert(e.message);
@@ -84,7 +83,7 @@ function weatherData(apicall){
      map.locate({setView: true, maxZoom: 20});
    }
    // call locate every 3 seconds... forever
-   setInterval(locate, 3000);
+   setInterval(locate, 5000);
 
   if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", function(event) {
