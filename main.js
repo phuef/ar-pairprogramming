@@ -57,16 +57,22 @@ function weatherData(apicall){
           L.tileLayer(
               'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
               attribution: '&copy; '+mapLink+', '+wholink,
-              maxZoom: 18,
+              maxZoom: 20,
               }).addTo(map);
 
+ var current_position, current_accuracy;
+
   function onLocationFound(e) {
-          var marker= L.marker(e.latlng)
-          marker.addTo(map)
-          var latLngs = [ marker.getLatLng() ];
+            if (current_position) {
+            map.removeLayer(current_position);
+            map.removeLayer(current_accuracy);
+        }
+          var current_position= L.marker(e.latlng).addTo(map)
+        
+          var latLngs = [ current_position.getLatLng() ];
           var markerBounds = L.latLngBounds(latLngs);
           map.fitBounds(markerBounds);
-          map.setZoom(15);
+          map.setZoom(20);
       }
       function onLocationError(e) {
         alert(e.message);
@@ -74,7 +80,15 @@ function weatherData(apicall){
   map.on('locationfound', onLocationFound);
   map.on('locationerror', onLocationError);
 
-  map.locate({setView: true, maxZoom: 18});
+  map.locate({setView: true, maxZoom: 20});
+
+  // wrap map.locate in a function
+   function locate() {
+     map.locate({setView: true, maxZoom: 20});
+   }
+   // call locate every 3 seconds... forever
+   setInterval(locate, 3000);
+
   if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", function(event) {
         // alpha: rotation around z-axis
