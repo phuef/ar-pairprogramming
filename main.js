@@ -63,6 +63,10 @@ function weatherData(apicall){
   function onLocationFound(e) {
           var marker= L.marker(e.latlng)
           marker.addTo(map)
+          var latLngs = [ marker.getLatLng() ];
+          var markerBounds = L.latLngBounds(latLngs);
+          map.fitBounds(markerBounds);
+          map.setZoom(15);
       }
       function onLocationError(e) {
         alert(e.message);
@@ -70,7 +74,7 @@ function weatherData(apicall){
   map.on('locationfound', onLocationFound);
   map.on('locationerror', onLocationError);
 
-  map.locate({setView: true, maxZoom: 15});
+  map.locate({setView: true, maxZoom: 18});
   if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", function(event) {
         // alpha: rotation around z-axis
