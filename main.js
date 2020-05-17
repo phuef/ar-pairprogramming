@@ -69,7 +69,7 @@ function weatherData(apicall){
   map.on('locationfound', onLocationFound);
   map.on('locationerror', onLocationError);
 
-  map.locate({setView: true, maxZoom: 20});
+  map.locate({setView: true, Zoom: 5});
   if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", function(event) {
         // alpha: rotation around z-axis
