@@ -49,7 +49,7 @@ function weatherData(apicall){
   return JSON.parse(request.responseText);
 }
 
-  var map = L.map('map').setView([coordLat,coordLong], 20);
+  var map = L.map('map')
           mapLink =
               '<a href="http://www.esri.com/">Esri</a>';
           wholink =
@@ -59,7 +59,7 @@ function weatherData(apicall){
               attribution: '&copy; '+mapLink+', '+wholink,
               maxZoom: 20,
               }).addTo(map);
-
+console.log(map);
  var current_position;
 var lat,lon;
   function onLocationFound(e) {
@@ -67,7 +67,7 @@ var lat,lon;
             map.removeLayer(current_position);
         }
           current_position= L.marker(e.latlng).addTo(map);
-
+console.log(map)
 
           var latLngs = [ current_position.getLatLng() ];
           lat=latLngs[0].lat;
@@ -85,6 +85,7 @@ var lat,lon;
    function locate() {
      map.locate({setView: true, maxZoom: 20});
    }
+   locate();
    // call locate every 3 seconds... forever
    setInterval(locate, 5000);
    //locate()
@@ -110,7 +111,6 @@ var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
          var scene = document.querySelector('a-scene');
          scene.setAttribute('display', "none");
        document.getElementById("map").style.display="flex";
-
 
     }
     else{
